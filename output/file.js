@@ -1,0 +1,1 @@
+extradata = {"line1": "./csvfiles\\file2.csv has -4 more rows then ./csvfiles\\file1.csv", "line2": 91.0, "line3": "Incomplete match", "line3C": "red"}

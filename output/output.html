@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSV File to HTML Table Using AJAX jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src= "data.js"></script>
+    <script src= "file.js"></script>
+    <script>
+        $(document).ready(function () {
+                $("#data").append(extradata.line1 + " ");
+                $("#compare1").append(extradata.line3, " ");
+                $("#compare1").css('color', extradata.line3C);
+                $("#mybarSafe").append(extradata.line2 + "% Matched");
+                $("#mybarSafe").css('width', extradata.line2 + "%");
+                $("#mybarUnsafe").append(100-extradata.line2 + "% Mismatched");
+                $("#mybarUnsafe").css('width', 100-extradata.line2 + "%");
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="table-responsive">
+            <h1 align="center">CSV File Comparision output</h1>
+            <br />
+            <div class="w3-container">
+                <h3 id="compare1"></h3>
+                <div class="progress">
+                    <div id="mybarSafe" class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
+                    </div>
+                    <div id="mybarUnsafe" class="progress-bar progress-bar-danger" role="progressbar" style="width:0%">
+                    </div>
+                </div>
+
+                <br>
+                <div id="data"></div>
+                <br>
+                <div align="center">
+                    <button type="button" name="load_data" id="load_data" class="btn btn-info">SHOW DATA
+                        DIFFERENCE</button>
+                </div>
+                <br />
+                <div id="employee_table">
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
+
+<script>
+$(document).ready(function(){
+    $('#load_data').click(function () {
+        drawhtml();
+    });
+});
+
+function drawhtml(){
+     var employee_data = myData;
+                    var table_data = '<table class="table table-bordered table-striped">';
+                    for (var count = 0; count < employee_data.length; count++) {
+                        var cell_data = employee_data[count].x1.split(",");
+                        table_data += '<tr>';
+                        for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
+                            if (count === 0) {
+                                table_data += '<th>' + cell_data[cell_count] + '</th>';
+                            }
+                            else {
+                                table_data += '<td>' + cell_data[cell_count] + '</td>';
+                            }
+                        }
+                        table_data += '</tr>';
+                    }
+                    table_data += '</table>';
+                    $('#employee_table').html(table_data);
+}
+
+</script>
