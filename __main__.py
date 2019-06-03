@@ -41,7 +41,7 @@ def data_set_creator():
         if(count_difference > 0):
             result['line1'] = '('+files[0]+') has '+str(count_difference)+' more rows then ('+files[1]+')'
         elif(count_difference < 0):
-            result['line1'] = files[1]+' has '+str(count_difference)+' more rows then '+files[0]
+            result['line1'] = files[1]+' has '+str((count_difference*-1))+' more rows then '+files[0]
         else:
             result['line1'] = "Row count for the files are same"
         #finding the difference between file1 and file2 [list(A.columns) gives list of colums]
